@@ -1,4 +1,17 @@
 # Blockchain transaction tracker
+## Devops description
+This app is a copy from repo https://github.com/yuloskov/blockchain-transactions
+
+### Best practices
+#### JS
+##### 1 - TypeScript
+TypeScript is a way to go to build a React app
+##### 2 - Using Redux
+Using Redux for global state management is an industry standard
+#### Docker
+##### 1 - requirements
+Requirements installation before copying the code is a great practice.
+ 
 ## Description
 This project is written using React v16.13.1, Typescript and Redux.
 

@@ -1,4 +1,4 @@
-#Moscow time web app
+# Moscow time web app
 ## Description
 This app is built using python flask framework and containerized using docker. It shows current Moscow time. 
 ## How to build

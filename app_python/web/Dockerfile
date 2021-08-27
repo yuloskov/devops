@@ -16,4 +16,4 @@ EXPOSE 5000
 
 COPY ./application .
 
-CMD ["python3", "app.py"]
+CMD ["python3", "__init__.py"]

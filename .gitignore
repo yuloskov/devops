@@ -39,3 +39,9 @@ docker-compose.override.yaml
 
 # Jenkins
 jenkins
+
+# Terraform
+.terraform
+.terraform.*
+terraform.*
+virtualbox.box

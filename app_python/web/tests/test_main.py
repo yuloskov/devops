@@ -1,11 +1,14 @@
+"""Test app"""
+# pylint: disable=redefined-outer-name
 import pytest
 
-from app_python.web.application import create_app
+from web.application import create_app
 
 
 @pytest.fixture
 def client():
-    app = create_app({'TESTING': True})
+    """Create client"""
+    app = create_app({"TESTING": True})
 
     with app.test_client() as client:
         yield client
@@ -14,6 +17,6 @@ def client():
 def test_time(client):
     """Start with a blank database."""
 
-    rv = client.get('/')
-    print(rv)
-    assert b'id="time"' in rv.data
+    request_data = client.get("/")
+    print(request_data)
+    assert b'id="time"' in request_data.data

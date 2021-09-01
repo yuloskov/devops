@@ -1,7 +1,8 @@
 """A simple python app that shows current Moscow time"""
 
-import pytz
 import datetime
+
+import pytz
 from flask import Flask, render_template
 
 
@@ -16,18 +17,23 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.update(test_config)
 
+    # pylint: disable=unused-variable
     @app.route("/")
     def index():
         """Main page"""
-        timezone = pytz.timezone('Europe/Moscow')
-        return render_template(
-            'main.html',
-            time=str(datetime.datetime.now().astimezone(timezone)),
-        ), 200
+        timezone = pytz.timezone("Europe/Moscow")
+
+        return (
+            render_template(
+                "main.html",
+                time=str(datetime.datetime.now().astimezone(timezone)),
+            ),
+            200,
+        )
 
     return app
 
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(host="0.0.0.0")
+    my_app = create_app()
+    my_app.run(host="0.0.0.0")

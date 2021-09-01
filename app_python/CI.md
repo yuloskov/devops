@@ -11,3 +11,5 @@ Using cache for dependency installation allows to save vm time
 ## Jenkins
 ### 1 - Using docker socket
 Using docker socket volume allows you to run docker pipelines in Jenkins
+### 2 - Using github tokens
+Using github tokens with small expiration date allows to use Jenkins securely

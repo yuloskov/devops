@@ -5,7 +5,9 @@ This app is built using python flask framework and containerized using docker. I
 ## How to build
 ```docker build -t tag_name .```
 ## How to run
-```docker run yuloskov/time:latest```
+```docker run yuloskov/time:master```
+The app will run on port 5000.
+
 ## How to test
 ```
 cd app_python/web
@@ -18,4 +20,16 @@ Run jenkins with
 docker run --rm --name jenkins -p 8080:8080 -p 50000:50000 -u 0 -v `pwd`:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
 ```
 
-The app will run on port 5000.
+## Terraform
+Run terraform with
+```
+terraform init
+terraform apply
+```
+
+## Ansible
+Rin with
+```
+cd ansible/playbooks
+ansible-playbook -i ../inventory/aws.yml main.yml 
+```

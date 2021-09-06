@@ -1,0 +1,5 @@
+docker:
+  hosts:
+   54.149.126.111
+  vars:
+   ansible_user: ubuntu	

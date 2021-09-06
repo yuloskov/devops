@@ -45,3 +45,4 @@ jenkins
 .terraform.*
 terraform.*
 virtualbox.box
+aws.pub

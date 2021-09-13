@@ -32,10 +32,6 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# Docker
-docker-compose.yml
-docker-compose.yaml
-docker-compose.override.yaml
 
 # Jenkins
 jenkins

@@ -10,6 +10,7 @@ service/kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP      
 ```
 
 ## Step 9
+```
 NAME                                         READY   STATUS    RESTARTS        AGE
 pod/app-python-deployment-77d74db5c8-cpthz   1/1     Running   1 (7m53s ago)   13m
 pod/app-python-deployment-77d74db5c8-jwvcq   1/1     Running   1 (7m53s ago)   13m
@@ -18,3 +19,15 @@ pod/app-python-deployment-77d74db5c8-vq42m   1/1     Running   1 (7m53s ago)   1
 NAME                         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 service/app-python-service   LoadBalancer   10.107.71.238   <pending>     5000:30721/TCP   4m21s
 service/kubernetes           ClusterIP      10.96.0.1       <none>        443/TCP          37m
+```
+
+# Lab 10
+## Step 5
+```
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/app-python-6bc584f595-dx279   1/1     Running   0          91s
+
+NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+service/app-python   LoadBalancer   10.104.226.250   <pending>     5000:30223/TCP   6m58s
+service/kubernetes   ClusterIP      10.96.0.1        <none>        443/TCP          87m
+```

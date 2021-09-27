@@ -7,6 +7,8 @@ This app is built using python flask framework and containerized using docker. I
 ## How to run
 ```docker run yuloskov/time:master```
 The app will run on port 5000.
+## Visits
+To see previous times users got, go to /visits
 
 ## How to test
 ```

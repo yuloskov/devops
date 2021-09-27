@@ -42,3 +42,6 @@ jenkins
 terraform.*
 virtualbox.box
 aws.pub
+
+# Volumes
+app_python/data

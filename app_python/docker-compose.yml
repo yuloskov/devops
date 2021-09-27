@@ -2,6 +2,8 @@ version: "3.5"
 
 services:
   web: 
+    build:
+      context: ./web
     image: yuloskov/devops:master
     ports: 
       - 5000:5000
@@ -11,3 +13,7 @@ services:
         tag: "{{.ImageName}}|{{.Name}}|{{.ImageFullID}}|{{.FullID}}"
         max-size: "1000k"
         max-file: "2"
+    volumes:
+      - ./data:/data
+    environment:
+      DATA_PATH: '/data/times.txt'

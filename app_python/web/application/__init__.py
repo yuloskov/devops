@@ -41,9 +41,12 @@ def create_app(test_config=None):
 
     @app.route("/visits")
     def visits():
-        with open(writepath, 'r') as f:
-            content = f.read()
-
+        try:
+            with open(writepath, 'r') as f:
+                content = f.read()
+        except:
+            content = 'No visits yet \n'
+        
         return (
             render_template(
                 "visits.html",

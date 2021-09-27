@@ -10,7 +10,7 @@ from flask import Flask, render_template
 def create_app(test_config=None):
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
-    
+
     if test_config is None:
         # load the instance config, if it exists, when not testing
         app.config.from_pyfile("config.py", silent=True)
@@ -18,7 +18,6 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.update(test_config)
 
-    writepath = os.environ.get('DATA_PATH')
 
     # pylint: disable=unused-variable
     @app.route("/")
@@ -27,9 +26,10 @@ def create_app(test_config=None):
         timezone = pytz.timezone("Europe/Moscow")
         cur_time = str(datetime.datetime.now().astimezone(timezone))
 
-        mode = 'a' if os.path.exists(writepath) else 'w'
-        with open(writepath, mode) as f:
-            f.write(f'{cur_time}\n')
+        writepath = os.environ.get("DATA_PATH", 'times.txt')
+        mode = "a" if os.path.exists(writepath) else "w"
+        with open(writepath, mode, encoding="utf-8") as file:
+            file.write(f"{cur_time}\n")
 
         return (
             render_template(
@@ -41,20 +41,21 @@ def create_app(test_config=None):
 
     @app.route("/visits")
     def visits():
+        writepath = os.environ.get("DATA_PATH")
         try:
-            with open(writepath, 'r') as f:
-                content = f.read()
-        except:
-            content = 'No visits yet \n'
-        
+            with open(writepath, "r", encoding="utf-8") as file:
+                content = file.read()
+        except OSError as err:
+            print(err)
+            content = "No visits yet \n"
+
         return (
             render_template(
                 "visits.html",
-                visits=content.split('\n')[:-1],
+                visits=content.split("\n")[:-1],
             ),
-            200
+            200,
         )
-
 
     return app
 

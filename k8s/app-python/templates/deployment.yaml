@@ -47,12 +47,20 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /application/config.json
+              subPath: config.json
           env:
-          - name: MY_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: credentials
-                key: password
+            - name: MY_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: credentials
+                  key: password
+      volumes:
+        - name: config-volume
+          configMap:
+            name: my-config
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

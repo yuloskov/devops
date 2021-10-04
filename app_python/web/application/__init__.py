@@ -26,7 +26,7 @@ def create_app(test_config=None):
         timezone = pytz.timezone("Europe/Moscow")
         cur_time = str(datetime.datetime.now().astimezone(timezone))
 
-        writepath = os.environ.get("DATA_PATH", 'times.txt')
+        writepath = os.environ.get("DATA_PATH", '/data/times.txt')
         mode = "a" if os.path.exists(writepath) else "w"
         with open(writepath, mode, encoding="utf-8") as file:
             file.write(f"{cur_time}\n")
@@ -41,7 +41,7 @@ def create_app(test_config=None):
 
     @app.route("/visits")
     def visits():
-        writepath = os.environ.get("DATA_PATH")
+        writepath = os.environ.get("DATA_PATH", '/data/times.txt')
         try:
             with open(writepath, "r", encoding="utf-8") as file:
                 content = file.read()

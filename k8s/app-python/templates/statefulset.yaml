@@ -55,16 +55,30 @@ spec:
               subPath: config.json
             - name: visits
               mountPath: /data
+            - name: workdir
+              mountPath: /workdir
           env:
             - name: MY_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: credentials
                   key: password
+      initContainers:
+        - name: install
+          image: busybox
+          command:
+          - wget
+          - "-O"
+          - "/work-dir/index.html"
+          - http://info.cern.ch
+          volumeMounts:
+            - name: workdir
+              mountPath: "/work-dir"
       volumes:
         - name: config-volume
           configMap:
             name: my-config
+        - name: workdir
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
